@@ -4,14 +4,14 @@ from fastapi import FastAPI, HTTPException
 from src.schemes import MovieRequest, MovieResponse
 from models.knn.app.recommend_function import get_recommendations
 
-
+__version__ = '0.0.1'
 app = FastAPI()
 
-@app.get('/home')
+@app.get('/version')
 async def home():
-    return "Ok"
+    return {'version': __version__}
 
-@app.post('/predict', response_model=MovieResponse)
+@app.post('/similar_films', response_model=MovieResponse)
 async def predict(request: MovieRequest):
     try:
         recommendations = get_recommendations(request.movie_id)
