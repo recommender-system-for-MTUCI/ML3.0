@@ -1,11 +1,15 @@
 import uvicorn
 from fastapi import FastAPI, HTTPException
+from config.settings import settings
 
 from src.schemes import MovieRequest, MovieResponse
-from models.knn.app.recommend_function import get_recommendations
+from src.KNN_recommend_function import get_recommendations
 
-__version__ = '0.0.1'
+
+__version__ = settings.VERSION
+
 app = FastAPI()
+
 
 @app.get('/version')
 async def home():
