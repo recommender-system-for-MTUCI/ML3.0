@@ -16,5 +16,4 @@ class Settings(BaseSettings):
     MAX_RECOMMENDATIONS: int = 10
 
 
-# Инициализация настроек
 settings = Settings()
