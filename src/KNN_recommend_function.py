@@ -15,7 +15,7 @@ def get_recommendations(id: int, cosine_sim=cos_sim, popularity_threshold=settin
     sim_scores = sim_scores[1:]  # Убираем сам фильм
     movie_indices = [i[0] for i in sim_scores]
 
-    popular_movies = data.iloc[movie_indices]
-    popular_movies = popular_movies[popular_movies['weight_rating'] >= popularity_threshold][:max_recommendations]
+    popular_movies = data.iloc[movie_indices][:10]
+    # popular_movies = popular_movies[popular_movies['weight_rating'] >= popularity_threshold][:max_recommendations]
 
     return popular_movies['id'].tolist()

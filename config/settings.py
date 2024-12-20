@@ -9,7 +9,7 @@ class Settings(BaseSettings):
 
     # Пути к данным
     DATASET_PATH: Path = Path("data/dataset_23k_v2.csv")
-    MODEL_PATH: Path = Path("models/knn/weights/cosine_similarity.pkl")
+    MODEL_PATH: Path = Path("models/knn/weights/tf_cos.pkl")
 
     # Параметры рекомендаций
     POPULARITY_THRESHOLD: float = 0.65

@@ -15,16 +15,18 @@ app = FastAPI()
 async def home():
     return {'version': __version__}
 
-@app.post('/predict')
-async def predict(request: MovieRequest):
+@app.get('/predict/{movie_id}')
+async def predict(movie_id:int):
     try:
-        recommendations = get_recommendations(request.movie_id)
+        movie_id = int(movie_id)
+        recommendations = get_recommendations(movie_id)
         return {'recommend_movies': recommendations}
     except IndexError:  
         raise HTTPException(status_code=404, detail="Film ID not found.")
     except Exception as e:  
         raise HTTPException(status_code=500, detail=str(e))
-    
 
+'''
 if __name__ == '__main__':
     uvicorn.run('main:app', host="0.0.0.0", port=8000)
+'''
